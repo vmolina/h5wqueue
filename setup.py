@@ -9,6 +9,6 @@ setup(name="h5wqueue",
       license='GPLv3',
       packages=['h5wqueue'],
       install_requires=[
-          'pytables', 'rq'
+          'tables', 'rq'
       ],
 )
