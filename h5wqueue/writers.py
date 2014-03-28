@@ -27,7 +27,7 @@ def create_node_task(h5file_name, path, node_name, node_type="group", attributes
         attributes = {}
     args = (h5file_name, path, node_name)
     kwargs = {"node_type": node_type, "attributes": attributes, "array": array, "compress": compress}
-    return writer_q.enqueue_call(create_node, args=args, kwargs=kwargs)
+    return writer_q.enqueue_call(func=create_node, args=args, kwargs=kwargs)
 
 
 def create_node(h5file_name, path, node_name, node_type="group", attributes=None, array=None, compress=False):
@@ -79,7 +79,7 @@ def modify_attr_task(h5file_name, node_path, set_attributes=None, delete_attribu
         set_attributes = {}
     args = (h5file_name, node_path)
     kwargs = {"set_attributes": set_attributes, "delete_attributes": delete_attributes}
-    return writer_q.enqueue_call(modify_attributes, args=args, kwargs=kwargs)
+    return writer_q.enqueue_call(func=modify_attributes, args=args, kwargs=kwargs)
 
 
 def modify_attributes(h5file_name, node_path, set_attributes=None, delete_attributes=()):
